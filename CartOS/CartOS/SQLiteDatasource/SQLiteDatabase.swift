@@ -17,7 +17,7 @@ class SQLiteDatabase {
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             
-            let fileUrl = documentDirectory.appendingPathComponent("contactList").appendingPathExtension("sqlite3")
+            let fileUrl = documentDirectory.appendingPathComponent("productList").appendingPathExtension("sqlite3")
             
             database = try Connection(fileUrl.path)
         } catch {
