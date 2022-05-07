@@ -54,7 +54,7 @@ class ProductScreenTableViewController: UITableViewController {
           if editingStyle == .delete {
               let product = viewModel.cellForRowAt(indexPath: indexPath)
               
-              // Delete contact from database table
+              // Delete product from database table
               SQLiteCommands.deleteRow(productId: product.id)
               
               // Updates the UI after delete changes
