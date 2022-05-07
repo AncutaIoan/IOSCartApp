@@ -34,7 +34,7 @@ class NewProductViewController: UIViewController {
             database.createTable()
         }
         
-        // MARK: - Setup the views with the values of the selected contact
+        // MARK: - Setup the views with the values of the selected product
         private func setUpViews() {
             if let viewModel = viewModel {
                 productNameTextField.text = viewModel.productName
@@ -73,17 +73,16 @@ class NewProductViewController: UIViewController {
             }
         }
         
-        // MARK: - Update contact
+        // MARK: - Update product
         private func updateProduct(_ productValues: Product) {
             let productUpdatedInTable = SQLiteCommands.updateRow(productValues)
             
-            // Phone number is unique to each contact so we check if it already exists
             if productUpdatedInTable == true {
                 if let cellClicked = navigationController {
                     cellClicked.popViewController(animated: true)
                 }
             } else {
-                showError("Error", message: "This contact cannot be updated because this already exist in your product list")
+                showError("Error", message: "This product cannot be updated because this already exist in your product list")
             }
         }
         
@@ -134,7 +133,7 @@ class NewProductViewController: UIViewController {
     }
 
 extension NewProductViewController: UITextFieldDelegate {
-    // MARK: - Phone number validation
+
     private func format(with mask: String, price: String) -> String {
         let numbers = price.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
