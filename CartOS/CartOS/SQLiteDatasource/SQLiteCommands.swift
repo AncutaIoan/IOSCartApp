@@ -11,7 +11,7 @@ import SQLite
 
 class SQLiteCommands {
     
-    static var table = Table("contact")
+    static var table = Table("product")
     
     // Expressions
     static let id = Expression<Int>("id")
@@ -68,15 +68,15 @@ class SQLiteCommands {
         }
         
         // Extracts the appropriate product from the table according to the id
-        let contact = table.filter(id == productValues.id).limit(1)
+        let product = table.filter(id == productValues.id).limit(1)
         
         do {
             // Update the product's values
-            if try database.run(contact.update(productName <- productValues.productName, shopName <- productValues.shopName, price <- productValues.price, photo <- productValues.photo)) > 0 {
-                print("Updated contact")
+            if try database.run(product.update(productName <- productValues.productName, shopName <- productValues.shopName, price <- productValues.price, photo <- productValues.photo)) > 0 {
+                print("Updated product")
                 return true
             } else {
-                print("Could not update contact: contact not found")
+                print("Could not update product: product not found")
                 return false
             }
         } catch let Result.error(message, code, statement) where code == SQLITE_CONSTRAINT {
